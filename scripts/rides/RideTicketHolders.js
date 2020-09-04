@@ -1,8 +1,7 @@
 const contentTarget = document.querySelector(".rides")
 const eventHub = document.querySelector("#state-fair")
 
-eventHub.addEventListener("activitySelected", customEvent => {
-    console.log("Its been dispatched!")
+eventHub.addEventListener("rideTicketSelected", customEvent => {
     RideTicketHolders()
 })
 
