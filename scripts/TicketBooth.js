@@ -33,11 +33,28 @@ eventHub.addEventListener('click', event => {
 })
 
 
+// Listen for the Games Ticket button to be clicked
+eventHub.addEventListener('click', event => {
+    // Retrieve ID of clicked element
+    const gamesSelected = event.target.id
+    // Only continue if the clicked element was the "Food Ticket" button
+    if (gamesSelected === "gamesTicket") {
+        const gamesEvent = new CustomEvent("gamesTicketSelected", {
+            detail: {
+                activity: gamesSelected
+            }
+        })
+        eventHub.dispatchEvent(gamesEvent)
+    }
+})
+
+
 export const TicketBooth = () => {
     contentTarget.innerHTML = `
         <div class="ticketBooth">
         <button id="rideTicket">Ride Ticket</button>
         <button id="foodTicket">Food Ticket</button>
+        <button id="gamesTicket">Games Ticket</button>
         </div>
         
     `
