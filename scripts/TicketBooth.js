@@ -49,12 +49,29 @@ eventHub.addEventListener('click', event => {
 })
 
 
+// Listen for the Sideshow Ticket button to be clicked
+eventHub.addEventListener('click', event => {
+    // Retrieve ID of clicked element
+    const sideshowSelected = event.target.id
+    // Only continue if the clicked element was the "Food Ticket" button
+    if (sideshowSelected === "sideshowTicket") {
+        const sideshowEvent = new CustomEvent("sideshowTicketSelected", {
+            detail: {
+                activity: sideshowSelected
+            }
+        })
+        eventHub.dispatchEvent(sideshowEvent)
+    }
+})
+
+
 export const TicketBooth = () => {
     contentTarget.innerHTML = `
         <div class="ticketBooth">
         <button id="rideTicket">Ride Ticket</button>
         <button id="foodTicket">Food Ticket</button>
         <button id="gamesTicket">Games Ticket</button>
+        <button id="sideshowTicket">Sideshow Ticket</button>
         </div>
         
     `
