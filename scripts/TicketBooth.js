@@ -64,6 +64,19 @@ eventHub.addEventListener('click', event => {
     }
 })
 
+eventHub.addEventListener('click', event => {
+    const fullPackageSelected = event.target.id
+    if (fullPackageSelected === "fullPackageTicket") {
+        const fullPackage = new CustomEvent("fullPackTicketSelected", {
+            detail: {
+                activity: fullPackageSelected
+            }
+        })
+        eventHub.dispatchEvent(fullPackage)
+    }
+})
+
+// Listen for the Full Package Ticket button to be clicked
 
 export const TicketBooth = () => {
     contentTarget.innerHTML = `
@@ -72,6 +85,7 @@ export const TicketBooth = () => {
         <button id="foodTicket">Food Ticket</button>
         <button id="gamesTicket">Games Ticket</button>
         <button id="sideshowTicket">Sideshow Ticket</button>
+        <button id="fullPackageTicket">Full Package Ticket</button>
         </div>
         
     `

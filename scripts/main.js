@@ -1,8 +1,9 @@
 // Import and invoke the ticket booth component function
 import { TicketBooth } from './TicketBooth.js'
-import { RideTicketHolders } from './rides/RideTicketHolders.js'
-import { FoodTicketHolders } from './food/FoodTicketHolder.js'
-import { GamesTicketHolders } from './games/GameTicketHolder.js'
-import { SideshowTicketHolders } from './sideshows/SideshowTicketHolder.js'
+import  './rides/RideTicketHolders.js'
+import './food/FoodTicketHolder.js'
+import './games/GameTicketHolder.js'
+import './sideshows/SideshowTicketHolder.js'
+import './package/FullPackageTicketHolder.js'
 
 TicketBooth()
