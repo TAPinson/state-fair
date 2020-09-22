@@ -1,5 +1,7 @@
 const contentTarget = document.querySelector(".entry")
 const eventHub = document.querySelector("#state-fair")
+const ticketDisplay = document.querySelector(".totalTickets")
+let tickets = 0
 
 // Listen for the Ride Ticket button to be clicked
 eventHub.addEventListener('click', event => {
@@ -12,6 +14,7 @@ eventHub.addEventListener('click', event => {
               activity: rideSelected
             }
         })
+        ticketCounter()
         eventHub.dispatchEvent(rideEvent)
     }
 })
@@ -28,6 +31,7 @@ eventHub.addEventListener('click', event => {
                 activity: foodSelected
             }
         })
+        ticketCounter()
         eventHub.dispatchEvent(foodEvent)
     }
 })
@@ -44,6 +48,7 @@ eventHub.addEventListener('click', event => {
                 activity: gamesSelected
             }
         })
+        ticketCounter()
         eventHub.dispatchEvent(gamesEvent)
     }
 })
@@ -60,10 +65,13 @@ eventHub.addEventListener('click', event => {
                 activity: sideshowSelected
             }
         })
+        ticketCounter()
         eventHub.dispatchEvent(sideshowEvent)
     }
 })
 
+
+// Listen for the Full Package Ticket button to be clicked
 eventHub.addEventListener('click', event => {
     const fullPackageSelected = event.target.id
     if (fullPackageSelected === "fullPackageTicket") {
@@ -72,12 +80,22 @@ eventHub.addEventListener('click', event => {
                 activity: fullPackageSelected
             }
         })
+        ticketCounter()
         eventHub.dispatchEvent(fullPackage)
     }
 })
 
-// Listen for the Full Package Ticket button to be clicked
 
+// Increment tickets purchased by 1 and render new total to the DOM
+const ticketCounter = () => {
+    tickets++
+    console.log(tickets)
+    ticketDisplay.innerHTML = ""
+    ticketDisplay.innerHTML = `Total Tickets Purchased = ${tickets}`
+
+}
+
+// Render the Ticket Booth Buttons
 export const TicketBooth = () => {
     contentTarget.innerHTML = `
         <div class="ticketBooth">
